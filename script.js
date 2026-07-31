@@ -273,99 +273,143 @@ document.querySelector(".answer");
 
 async function sendRSVP(status){
 
-    const data={
 
-        name:nameInput.value,
-        adults:adultsInput.value,
-        children:childrenInput.value,
-        status:status
+const data = {
 
-    };
+    name: nameInput.value.trim(),
 
+    adults: adultsInput.value,
 
-    try{
+    children: childrenInput.value,
 
-        await fetch(
-            GOOGLE_SCRIPT_URL,
-            {
-                method:"POST",
+    status: status
 
-                mode:"no-cors",
-
-                headers:{
-                    "Content-Type":"application/x-www-form-urlencoded"
-                },
-
-                body:new URLSearchParams(data)
-
-            }
-        );
+};
 
 
-        if(status==="Coming"){
 
-            answer.innerHTML=`
-
-            <h3>
-            Σας περιμένουμε!
-            </h3>
-
-            <p>
-            Χαρούμαστε που θα είστε μαζί μας.
-            </p>
-
-            `;
-
-        }
-        else{
-
-            answer.innerHTML=`
-
-            <h3>
-            Λάβαμε την απάντησή σας.
-            </h3>
-
-            <p>
-            Θα μας λείψετε.
-            </p>
-
-            `;
-
-        }
+console.log("Sending RSVP:");
+console.log(data);
 
 
-        answer.classList.add("show");
+
+try{
 
 
-        setTimeout(()=>{
+const response = await fetch(
+GOOGLE_SCRIPT_URL,
+{
 
-            modal.classList.remove("active");
+method:"POST",
 
-            answer.classList.remove("show");
+mode:"no-cors",
 
-            answer.innerHTML="";
+headers:{
 
+"Content-Type":
+"application/x-www-form-urlencoded"
 
-        },2500);
+},
 
-
-    }
-
-    catch(error){
-
-        console.log(error);
+body:
+new URLSearchParams(data).toString()
 
 
-        answer.innerHTML=`
+});
 
-        <p>
-        Υπήρξε ένα πρόβλημα.
-        Παρακαλώ δοκιμάστε ξανά.
-        </p>
 
-        `;
 
-    }
+console.log(
+"RSVP SENT"
+);
+
+
+
+if(status==="Coming"){
+
+
+answer.innerHTML=`
+
+<h3>
+Σας περιμένουμε!
+</h3>
+
+<p>
+Χαιρόμαστε που θα είστε μαζί μας.
+</p>
+
+`;
+
+
+}
+
+else{
+
+
+answer.innerHTML=`
+
+<h3>
+Λάβαμε την απάντησή σας.
+</h3>
+
+<p>
+Θα μας λείψετε.
+</p>
+
+`;
+
+
+}
+
+
+
+answer.classList.add("show");
+
+
+
+setTimeout(()=>{
+
+
+modal.classList.remove("active");
+
+
+answer.classList.remove("show");
+
+
+answer.innerHTML="";
+
+
+},2500);
+
+
+
+}
+
+
+
+catch(error){
+
+
+console.error(
+"RSVP ERROR:",
+error
+);
+
+
+
+answer.innerHTML=
+
+`
+<p>
+Υπήρξε πρόβλημα.
+Παρακαλώ δοκιμάστε ξανά.
+</p>
+`;
+
+
+
+}
+
 
 
 }
