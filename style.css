@@ -44,7 +44,24 @@ overflow-x:hidden;
 
 }
 
+body::before{
 
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+        radial-gradient(circle at center,
+        rgba(255,255,255,.55),
+        rgba(250,248,245,.88));
+
+    pointer-events:none;
+
+    z-index:-2;
+
+}
 
 
 
@@ -53,73 +70,40 @@ FLOATING MONOGRAM
 ===================== */
 
 
-.monogram{
+.background-logo{
+    position:fixed;
+    inset:0;
 
-position:fixed;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-z-index:1;
+    pointer-events:none;
+    z-index:-1;
 
-top:50%;
-
-left:50%;
-
-
-transform:
-translate(-50%,-50%);
-
-
-
-font-family:var(--title);
-
-font-size:35vw;
-
-font-weight:1000;
-
-letter-spacing:-25px;
-
-
-opacity:.045;
-
-pointer-events:none;
-
-
-
-animation:
-
-floatingMonogram 20s infinite ease-in-out;
-
+    overflow:hidden;
 }
 
+.background-logo img{
 
+    width:min(70vw,750px);
 
-@keyframes floatingMonogram{
+    height:auto;
 
+    opacity:.08;
 
-0%,100%{
+    filter:
+        grayscale(15%)
+        brightness(1.05);
 
-transform:
-translate(-50%,-50%)
-rotate(-5deg);
+    user-select:none;
+}
+.background-logo img{
+
+    mix-blend-mode:multiply;
+    /*mix-blend-mode:soft-light;*/
 
 }
-
-
-
-50%{
-
-transform:
-translate(-50%,-53%)
-rotate(5deg);
-
-}
-
-
-}
-
-
-
-
-
 
 
 /* =====================
@@ -423,50 +407,34 @@ COUPLE SECTION
 
 .couple{
 
+    display:flex;
 
-display:grid;
+    justify-content:center;
 
+    align-items:flex-start;
 
-grid-template-columns:1fr 1fr;
+    gap:3rem;
 
-
-position:relative;
-
-
-z-index:3;
-
-
-
+    flex-wrap:nowrap;
 }
 
 
 
 
 .person{
+    flex:1 1 50%;
+    min-width:0;
 
+    min-height:850px;
 
-min-height:850px;
+    padding:80px 30px;
 
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 
-padding:80px 30px;
-
-
-display:flex;
-
-
-flex-direction:column;
-
-
-align-items:center;
-
-
-justify-content:center;
-
-
-
-text-align:center;
-
-
+    text-align:center;
 }
 
 
@@ -1567,5 +1535,62 @@ font-size:3.5rem;
 
 }
 
+
+}
+@media (max-width:768px){
+
+    .couple{
+        width:100%;
+        gap:0;
+    }
+
+    .person{
+
+        flex:1;
+
+        padding:40px 12px;
+
+        min-height:auto;
+    }
+
+    .person img{
+
+        width:90%;
+
+        max-width:190px;
+
+        aspect-ratio:4/5;
+
+        height:auto;
+
+        object-fit:cover;
+
+        object-position:center;
+
+    }
+
+    .person h2{
+
+        font-size:2rem;
+
+        margin:20px 0 15px;
+
+    }
+
+    .parents-title{
+
+        letter-spacing:2px;
+
+        font-size:.65rem;
+
+    }
+
+    .family{
+
+        font-size:.8rem;
+
+        line-height:1.6;
+
+    }
 
 }
