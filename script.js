@@ -8,7 +8,7 @@ GOOGLE SHEET CONNECTION
 
 
 const GOOGLE_SCRIPT_URL = 
-"https://script.google.com/macros/s/AKfycbyDEFtC-vNhW7bjnjO0WwXpTBLF6OMX6x6PrI3ig4KYKqai5hQlgxwW7ediyH_jaHiP/exec";
+"https://script.google.com/macros/s/AKfycbwO-icwrbunRo_QrxBhkOrq1VoOo9p7b-ZiJdcN4FTEs9CYemNpK1LlSlRSqTWJ-GRr/exec";
 
 
 
