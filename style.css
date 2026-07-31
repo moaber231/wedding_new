@@ -1365,13 +1365,17 @@ RSVP
 RSVP MODAL
 ===================== */
 
+/* =====================
+RSVP MODAL
+===================== */
+
 .modal{
 
     position:fixed;
 
     inset:0;
 
-    display:none;
+    display:flex;
 
     justify-content:center;
 
@@ -1383,11 +1387,20 @@ RSVP MODAL
 
     z-index:999;
 
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.5s ease;
+
 }
+
 
 .modal.active{
 
-    display:flex;
+    opacity:1;
+
+    visibility:visible;
 
 }
 
@@ -1403,7 +1416,20 @@ RSVP MODAL
 
     box-shadow:0 40px 120px rgba(0,0,0,.35);
 
-    animation:modalShow .45s ease;
+    opacity:0;
+
+    transform:translateY(40px) scale(.96);
+
+    transition:.5s ease;
+
+}
+
+
+.modal.active .modal-content{
+
+    opacity:1;
+
+    transform:none;
 
 }
 
@@ -1625,39 +1651,21 @@ ANSWER MESSAGE
 
     opacity:0;
 
-    transition:.5s;
+    transform:translateY(15px);
+
+    transition:.5s ease;
 
 }
+
 
 .answer.show{
 
     opacity:1;
 
-}
-
-/* =====================
-MODAL ANIMATION
-===================== */
-
-@keyframes modalShow{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(30px) scale(.96);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:none;
-
-    }
+    transform:none;
 
 }
+
 
 /* =====================
 MOBILE
