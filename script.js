@@ -12,7 +12,35 @@ const GOOGLE_SCRIPT_URL =
 
 
 
+function submitRSVP(attending){
 
+    const answer=document.getElementById("answer");
+
+    answer.classList.add("show");
+
+    if(attending){
+
+        answer.innerHTML="❤️<br><br>Θα χαρούμε να σε δούμε από κοντά!";
+
+    }
+
+    else{
+
+        answer.innerHTML="🤍<br><br>Κρίμα που δεν θα σε δούμε.";
+
+    }
+
+    setTimeout(()=>{
+
+        rsvpModal.classList.remove("active");
+
+        answer.classList.remove("show");
+
+        answer.innerHTML="";
+
+    },2000);
+
+}
 
 
 /* =====================================

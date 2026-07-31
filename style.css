@@ -770,104 +770,91 @@ COUNTDOWN
 ===================== */
 
 
+/* =====================
+COUNTDOWN
+===================== */
+
 .countdown-section{
 
+    background:var(--ivory);
 
-background:var(--black);
+    color:#111;
 
+    padding:120px 20px;
 
-color:white;
+    text-align:center;
 
+    position:relative;
 
-
-padding:100px 20px;
-
-
-text-align:center;
-
-
-position:relative;
-
-
-z-index:3;
-
+    z-index:3;
 
 }
-
-
-
 
 .countdown-section h2{
 
+    font-family:var(--title);
 
-font-family:var(--title);
+    font-style:italic;
 
+    font-size:clamp(2.8rem,5vw,4rem);
 
-font-style:italic;
-
-
-font-size:3rem;
-
+    margin-bottom:60px;
 
 }
-
-
-
-
 
 .countdown{
 
+    display:flex;
 
-display:flex;
+    justify-content:center;
 
+    gap:55px;
 
-justify-content:center;
-
-
-gap:45px;
-
-
-margin-top:60px;
-
+    flex-wrap:wrap;
 
 }
 
+.countdown div{
 
+    min-width:110px;
 
+    padding:25px 10px;
+
+}
 
 .countdown span{
 
+    display:block;
 
-font-family:var(--title);
+    font-family:var(--title);
 
+    font-size:4.5rem;
 
-font-size:4rem;
+    font-weight:700;
 
+    color:#111;
 
-display:block;
-
+    line-height:1;
 
 }
-
-
 
 .countdown label{
 
+    display:block;
 
-font-family:var(--cinzel);
+    margin-top:12px;
 
+    font-family:var(--cinzel);
 
-font-size:.7rem;
+    text-transform:uppercase;
 
+    letter-spacing:4px;
 
-letter-spacing:3px;
+    font-size:.75rem;
 
+    color:#777;
 
 }
-
-
-
-
 
 
 
@@ -1231,215 +1218,799 @@ transform:translateY(-5px);
 }
 
 
-
-
-
-
-
-
+/* =====================
+RSVP SECTION
+===================== */
 
 /* =====================
 RSVP
 ===================== */
 
-
 .rsvp{
 
+    background:var(--black);
 
-padding:120px 20px;
+    color:white;
 
+    padding:140px 20px;
 
-text-align:center;
+    text-align:center;
 
+    position:relative;
 
-position:relative;
-
-
-z-index:3;
-
+    z-index:3;
 
 }
-
-
-
 
 .rsvp h2{
 
+    font-family:var(--title);
 
-font-family:var(--title);
+    font-style:italic;
 
+    font-weight:400;
 
-font-style:italic;
+    font-size:clamp(2.6rem,5vw,4rem);
 
+    margin-bottom:30px;
 
-font-size:3.5rem;
-
+    color:white;
 
 }
-
-
 
 .rsvp p{
 
+    max-width:700px;
 
-line-height:2;
+    margin:0 auto 55px;
 
+    line-height:2;
 
-font-size:1.1rem;
+    color:#bdbdbd;
 
+    font-size:1.05rem;
 
 }
 
+.rsvp strong{
 
+    color:white;
 
+    font-family:var(--cinzel);
 
+    letter-spacing:2px;
 
+    font-weight:600;
 
+}
 
+/* RSVP Button */
 
+#openRSVP{
+
+    background:white;
+
+    color:#111;
+
+    border:1px solid white;
+
+    padding:18px 60px;
+
+    font-family:var(--cinzel);
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    transition:all .35s ease;
+
+}
+
+#openRSVP:hover{
+
+    background:transparent;
+
+    color:white;
+
+    border:1px solid white;
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 30px rgba(255,255,255,.15);
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .rsvp{
+
+        padding:90px 25px;
+
+    }
+
+    .rsvp h2{
+
+        font-size:2.2rem;
+
+        line-height:1.2;
+
+    }
+
+    .rsvp p{
+
+        font-size:.95rem;
+
+        line-height:1.8;
+
+    }
+
+    #openRSVP{
+
+        width:100%;
+
+        max-width:320px;
+
+        padding:17px 20px;
+
+        letter-spacing:3px;
+
+    }
+
+}
+/* =====================
+RSVP MODAL
+===================== */
 
 .modal{
 
+    position:fixed;
 
-position:fixed;
+    inset:0;
 
+    display:none;
 
-inset:0;
+    justify-content:center;
 
+    align-items:center;
 
+    background:rgba(0,0,0,.72);
 
-background:
+    backdrop-filter:blur(8px);
 
-rgba(0,0,0,.75);
-
-
-
-display:none;
-
-
-align-items:center;
-
-
-justify-content:center;
-
-
-
-z-index:20;
-
+    z-index:999;
 
 }
-
-
 
 .modal.active{
 
-
-display:flex;
-
+    display:flex;
 
 }
-
-
 
 .modal-content{
 
+    position:relative;
 
-background:white;
+    width:min(92%,520px);
 
+    background:white;
 
-width:min(90%,450px);
+    padding:60px;
 
+    box-shadow:0 40px 120px rgba(0,0,0,.35);
 
-
-padding:50px;
-
-
-
-text-align:center;
-
-
-
-animation:
-
-modalShow .5s ease;
-
+    animation:modalShow .45s ease;
 
 }
 
+/* =====================
+MODAL TITLE
+===================== */
 
+.modal-content h2{
 
+    font-family:var(--title);
 
+    font-style:italic;
 
-@keyframes modalShow{
+    font-size:3rem;
 
+    text-align:center;
 
-from{
-
-opacity:0;
-
-transform:scale(.9);
-
-}
-
-
-to{
-
-opacity:1;
-
-transform:scale(1);
-
+    margin-bottom:40px;
 
 }
 
+/* =====================
+CLOSE BUTTON
+===================== */
+
+.close{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    border:1px solid #ddd;
+
+    background:white;
+
+    color:#555;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:1.3rem;
+
+    cursor:pointer;
+
+    transition:.3s;
 
 }
 
+.close:hover{
 
+    background:#111;
 
+    color:white;
 
+    transform:rotate(90deg);
+
+}
+
+/* =====================
+FORM
+===================== */
+
+.modal-content label{
+
+    display:block;
+
+    text-align:left;
+
+    margin-top:15px;
+
+    margin-bottom:8px;
+
+    font-family:var(--cinzel);
+
+    font-size:.72rem;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:#777;
+
+}
 
 .modal-content input,
 .modal-content select{
 
+    width:100%;
 
-width:100%;
+    padding:18px 0;
 
+    border:none;
 
-padding:15px;
+    border-bottom:1px solid #ddd;
 
+    background:transparent;
 
-margin:10px 0;
+    font-family:var(--body);
 
+    font-size:1rem;
+
+    outline:none;
+
+    transition:.3s;
 
 }
 
+.modal-content input:focus,
+.modal-content select:focus{
 
+    border-bottom:1px solid #111;
+
+}
+
+/* =====================
+BUTTONS
+===================== */
 
 .modal-buttons{
 
+    display:flex;
 
-display:flex;
+    gap:18px;
 
+    margin-top:40px;
 
-gap:10px;
+}
 
+#attend{
 
-margin-top:25px;
+    flex:1;
 
+    background:#111;
+
+    color:white;
+
+    border:none;
+
+    padding:18px;
+
+    font-family:var(--cinzel);
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#attend:hover{
+
+    background:#333;
+
+    transform:translateY(-3px);
+
+}
+
+#decline{
+
+    flex:1;
+
+    background:white;
+
+    color:#111;
+
+    border:1px solid #bbb;
+
+    padding:18px;
+
+    font-family:var(--cinzel);
+
+    letter-spacing:2px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#decline:hover{
+
+    background:#111;
+
+    color:white;
+
+    transform:translateY(-3px);
+
+}
+
+/* =====================
+ANSWER MESSAGE
+===================== */
+
+.answer{
+
+    margin-top:35px;
+
+    text-align:center;
+
+    font-family:var(--title);
+
+    font-style:italic;
+
+    font-size:1.8rem;
+
+    color:#111;
+
+    opacity:0;
+
+    transition:.5s;
+
+}
+
+.answer.show{
+
+    opacity:1;
+
+}
+
+/* =====================
+MODAL ANIMATION
+===================== */
+
+@keyframes modalShow{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px) scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+/* =====================
+MOBILE
+===================== */
+
+@media(max-width:768px){
+
+    .rsvp{
+
+        padding:100px 20px;
+
+    }
+
+    .rsvp h2{
+
+        font-size:2.3rem;
+
+    }
+
+    .rsvp p{
+
+        font-size:.95rem;
+
+    }
+
+    #openRSVP{
+
+        width:100%;
+
+        max-width:320px;
+
+    }
+
+    .modal-content{
+
+        width:94%;
+
+        padding:35px 24px;
+
+    }
+
+    .modal-content h2{
+
+        font-size:2.2rem;
+
+    }
+
+    .modal-buttons{
+
+        flex-direction:column;
+
+    }
+
+    #attend,
+    #decline{
+
+        width:100%;
+
+    }
+
+    .close{
+
+        width:36px;
+
+        height:36px;
+
+        top:12px;
+
+        right:12px;
+
+        font-size:1.1rem;
+
+    }
 
 }
 
 
 
-.close{
 
+.maps-section{
 
-float:right;
+    background:#0b0b0b;
 
+    color:white;
+
+    padding:120px 20px;
+
+    text-align:center;
+
+    position:relative;
+
+    z-index:3;
 
 }
 
+.maps-section h2{
 
+    font-family:var(--title);
+
+    font-style:italic;
+
+    font-size:3.2rem;
+
+    margin-bottom:10px;
+
+}
+
+.maps-subtitle{
+
+    color:#aaa;
+
+    margin-bottom:70px;
+
+    letter-spacing:2px;
+
+}
+
+.maps-grid{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:40px;
+
+}
+
+.map-card{
+
+    background:#161616;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:25px;
+
+    transition:.4s;
+
+}
+
+.map-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.map-card h3{
+
+    font-family:var(--title);
+
+    font-style:italic;
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+
+}
+
+.map-card p{
+
+    color:#999;
+
+    letter-spacing:2px;
+
+    margin-bottom:20px;
+
+    font-family:var(--cinzel);
+
+}
+
+.map-card iframe{
+
+    width:100%;
+
+    height:320px;
+
+    border:0;
+
+    filter:grayscale(100%) contrast(105%);
+
+}
+
+.map-button{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:14px 28px;
+
+    border:1px solid white;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-family:var(--cinzel);
+
+    letter-spacing:2px;
+
+    transition:.3s;
+
+}
+
+.map-button:hover{
+
+    background:white;
+
+    color:black;
+
+}
+.maps-section{
+
+    background:#0b0b0b;
+
+    color:white;
+
+    padding:120px 20px;
+
+    text-align:center;
+
+    position:relative;
+
+    z-index:3;
+
+}
+
+.maps-section h2{
+
+    font-family:var(--title);
+
+    font-style:italic;
+
+    font-size:3.2rem;
+
+    margin-bottom:10px;
+
+}
+
+.maps-subtitle{
+
+    color:#aaa;
+
+    margin-bottom:70px;
+
+    letter-spacing:2px;
+
+}
+
+.maps-grid{
+
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:40px;
+
+}
+
+.map-card{
+
+    background:#161616;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:25px;
+
+    transition:.4s;
+
+}
+
+.map-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+
+}
+
+.map-card h3{
+
+    font-family:var(--title);
+
+    font-style:italic;
+
+    font-size:2rem;
+
+    margin-bottom:10px;
+
+}
+
+.map-card p{
+
+    color:#999;
+
+    letter-spacing:2px;
+
+    margin-bottom:20px;
+
+    font-family:var(--cinzel);
+
+}
+
+.map-card iframe{
+
+    width:100%;
+
+    height:320px;
+
+    border:0;
+
+    filter:grayscale(100%) contrast(105%);
+
+}
+
+.map-button{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:14px 28px;
+
+    border:1px solid white;
+
+    color:white;
+
+    text-decoration:none;
+
+    font-family:var(--cinzel);
+
+    letter-spacing:2px;
+
+    transition:.3s;
+
+}
+
+.map-button:hover{
+
+    background:white;
+
+    color:black;
+
+}
 
 
 
@@ -1497,25 +2068,33 @@ font-size:3rem;
 
 
 
-.countdown{
+    .countdown{
 
+        gap:18px;
 
-gap:15px;
+    }
 
+    .countdown div{
 
-}
+        min-width:72px;
 
+        padding:10px;
 
+    }
 
-.countdown span{
+    .countdown span{
 
+        font-size:2.6rem;
 
-font-size:2.2rem;
+    }
 
+    .countdown label{
 
-}
+        font-size:.6rem;
 
+        letter-spacing:2px;
 
+    }
 
 .paper h2{
 
