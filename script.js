@@ -8,39 +8,8 @@ GOOGLE SHEET CONNECTION
 
 
 const GOOGLE_SCRIPT_URL = 
-"https://script.google.com/macros/s/AKfycbz6lypzyOrUD-mSEL_JhC4zxQyRPyQP6ZESH7qIpeHvkJQdTAtjtM3UXw3mGkcNMW-W/exec";
+"https://script.google.com/macros/s/AKfycbyDEFtC-vNhW7bjnjO0WwXpTBLF6OMX6x6PrI3ig4KYKqai5hQlgxwW7ediyH_jaHiP/exec";
 
-
-
-function submitRSVP(attending){
-
-    const answer=document.getElementById("answer");
-
-    answer.classList.add("show");
-
-    if(attending){
-
-        answer.innerHTML="❤️<br><br>Θα χαρούμε να σε δούμε από κοντά!";
-
-    }
-
-    else{
-
-        answer.innerHTML="🤍<br><br>Κρίμα που δεν θα σε δούμε.";
-
-    }
-
-    setTimeout(()=>{
-
-        rsvpModal.classList.remove("active");
-
-        answer.classList.remove("show");
-
-        answer.innerHTML="";
-
-    },2000);
-
-}
 
 
 /* =====================================
@@ -223,10 +192,8 @@ const modal =
 document.getElementById("rsvpModal");
 
 
-
 const openRSVP =
 document.getElementById("openRSVP");
-
 
 
 const close =
@@ -234,35 +201,43 @@ document.querySelector(".close");
 
 
 
+if(openRSVP){
 
-openRSVP.onclick=()=>{
+    openRSVP.onclick=()=>{
 
-modal.classList.add("active");
+        modal.classList.add("active");
 
-};
-
-
-
-close.onclick=()=>{
-
-modal.classList.remove("active");
-
-};
-
-
-
-
-
-modal.onclick=(e)=>{
-
-if(e.target===modal){
-
-modal.classList.remove("active");
+    };
 
 }
 
-};
 
+
+if(close){
+
+    close.onclick=()=>{
+
+        modal.classList.remove("active");
+
+    };
+
+}
+
+
+
+if(modal){
+
+    modal.onclick=(e)=>{
+
+        if(e.target===modal){
+
+            modal.classList.remove("active");
+
+        }
+
+    };
+
+}
 
 
 
@@ -298,113 +273,99 @@ document.querySelector(".answer");
 
 async function sendRSVP(status){
 
+    const data={
 
-const data={
+        name:nameInput.value,
+        adults:adultsInput.value,
+        children:childrenInput.value,
+        status:status
 
-
-name:
-nameInput.value,
-
-
-adults:
-adultsInput.value,
+    };
 
 
-children:
-childrenInput.value,
+    try{
+
+        await fetch(
+            GOOGLE_SCRIPT_URL,
+            {
+                method:"POST",
+
+                mode:"no-cors",
+
+                headers:{
+                    "Content-Type":"application/x-www-form-urlencoded"
+                },
+
+                body:new URLSearchParams(data)
+
+            }
+        );
 
 
-status:status
+        if(status==="Coming"){
+
+            answer.innerHTML=`
+
+            <h3>
+            Σας περιμένουμε!
+            </h3>
+
+            <p>
+            Χαρούμαστε που θα είστε μαζί μας.
+            </p>
+
+            `;
+
+        }
+        else{
+
+            answer.innerHTML=`
+
+            <h3>
+            Λάβαμε την απάντησή σας.
+            </h3>
+
+            <p>
+            Θα μας λείψετε.
+            </p>
+
+            `;
+
+        }
 
 
-};
+        answer.classList.add("show");
 
 
+        setTimeout(()=>{
+
+            modal.classList.remove("active");
+
+            answer.classList.remove("show");
+
+            answer.innerHTML="";
 
 
-try{
+        },2500);
 
 
-await fetch(
-GOOGLE_SCRIPT_URL,
-{
-method:"POST",
+    }
 
-mode:"no-cors",
+    catch(error){
 
-headers:{
-"Content-Type":"application/x-www-form-urlencoded"
-},
-
-body:
-new URLSearchParams(data)
-
-}
-);
+        console.log(error);
 
 
+        answer.innerHTML=`
 
+        <p>
+        Υπήρξε ένα πρόβλημα.
+        Παρακαλώ δοκιμάστε ξανά.
+        </p>
 
-if(status==="Coming"){
+        `;
 
-
-answer.innerHTML=`
-
-<h3>
-Σας περιμένουμε!
-</h3>
-
-<p>
-Χαρούμαστε που θα είστε μαζί μας.
-</p>
-
-`;
-
-
-
-}
-else{
-
-
-answer.innerHTML=`
-
-<h3>
-Λάβαμε την απάντησή σας.
-</h3>
-
-<p>
-Θα μας λείψετε.
-</p>
-
-`;
-
-
-
-}
-
-
-
-}
-
-
-catch(error){
-
-
-console.log(error);
-
-
-answer.innerHTML=`
-
-<p>
-Υπήρξε ένα πρόβλημα.
-Παρακαλώ δοκιμάστε ξανά.
-</p>
-
-`;
-
-
-}
-
+    }
 
 
 }
@@ -413,37 +374,35 @@ answer.innerHTML=`
 
 
 
+const attend =
+document.getElementById("attend");
 
-document
-.getElementById("attend")
-.onclick=()=>{
 
+if(attend){
+
+attend.onclick=()=>{
 
 sendRSVP("Coming");
 
-
 };
 
+}
 
 
 
+const decline =
+document.getElementById("decline");
 
 
+if(decline){
 
-document
-.getElementById("decline")
-.onclick=()=>{
+    decline.onclick=()=>{
 
+        sendRSVP("Not Coming");
 
-sendRSVP("Not Coming");
+    };
 
-
-};
-
-
-
-
-
+}
 
 
 
