@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magda & Nikos | Wedding Invitation</title>
+    <meta property="og:title" content="Nikos & Madga wedding invitation">
+    <meta property="og:image" content="images/monogram.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nikos & Madga wedding invitation">
+    <meta name="twitter:image" content="images/monogram.jpg">
+    <link rel="icon" type="image/jpeg" href="images/monogram.jpg">
    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Cinzel:wght@400;500;600&family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -77,6 +84,14 @@
         </div>
       </div>
     </section>
+    <!-- RSVP -->
+    <section class="rsvp reveal">
+      <h2> Θα χαρούμε πολύ να σας έχουμε κοντά μας. </h2>
+      <p> Για την καλύτερη οργάνωση της ημέρας μας, θα σας παρακαλούσαμε να μας ενημερώσετε για την παρουσία σας έως την <br>
+        <strong> 1η Οκτωβρίου 2026 </strong>
+      </p>
+      <button id="openRSVP"> RSVP </button>
+    </section>
     <!-- GIFT -->
     <section class="gift reveal">
       <h2>Δώρο Αγάπης</h2>
@@ -101,7 +116,7 @@
           </div>
         </div>
       </div>
-      <div class="copy-message"> Αντιγράφηκε! </div>
+      <div class="copy-message" aria-live="polite"> Αντιγράφηκε! </div>
     </section>
     <!-- PHOTO UPLOAD -->
     <section class="guest-photo reveal">
@@ -116,14 +131,6 @@
       </div>
       <div class="preview" id="preview"></div>
       <button class="upload-btn"> Upload Photos </button>
-    </section>
-    <!-- RSVP -->
-    <section class="rsvp">
-      <h2> Θα χαρούμε πολύ να σας έχουμε κοντά μας. </h2>
-      <p> Για την καλύτερη οργάνωση της ημέρας μας, θα σας παρακαλούσαμε να μας ενημερώσετε για την παρουσία σας έως την <br>
-        <strong> 1η Οκτωβρίου 2026 </strong>
-      </p>
-      <button id="openRSVP"> RSVP </button>
     </section>
     <!-- RSVP MODAL -->
     <div class="modal" id="rsvpModal">
@@ -157,7 +164,6 @@
     </div>
     <!-- COUNTDOWN -->
     <section class="countdown-section">
-      <h2> Until we say "I do" </h2>
       <div class="countdown">
         <div>
           <span id="days"> 00 </span>
@@ -176,6 +182,7 @@
           <label> Seconds </label>
         </div>
       </div>
+      <h2> Until we say "I do" </h2>
     </section>
     <script src="script.js"></script>
   </body>

@@ -195,6 +195,35 @@
     }
 
 
+    @keyframes copyToast {
+
+        0% {
+
+            opacity:0;
+            transform:translateX(-50%) translateY(16px) scale(.94);
+
+        }
+
+
+        12%,
+        80% {
+
+            opacity:1;
+            transform:translateX(-50%) translateY(0) scale(1);
+
+        }
+
+
+        100% {
+
+            opacity:0;
+            transform:translateX(-50%) translateY(-10px) scale(.97);
+
+        }
+
+    }
+
+
     to {
 
         opacity:.85;

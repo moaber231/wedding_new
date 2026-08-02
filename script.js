@@ -131,7 +131,75 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    document.getElementById("iban");
+    const copyMessage =
+        document.querySelector(".copy-message");
+
+
+    const copyTargets =
+        document.querySelectorAll(".copy-box");
+
+
+    let copyMessageTimeout;
+
+
+    async function copyText(text) {
+
+        if (navigator.clipboard && window.isSecureContext) {
+
+            await navigator.clipboard.writeText(text);
+            return;
+
+        }
+
+
+        const tempInput =
+            document.createElement("textarea");
+
+        tempInput.value = text;
+        tempInput.setAttribute("readonly", "");
+        tempInput.style.position = "absolute";
+        tempInput.style.left = "-9999px";
+
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+
+    }
+
+
+    copyTargets.forEach(target => {
+
+        target.addEventListener("click", async () => {
+
+            try {
+
+                await copyText(target.textContent.trim());
+
+                if (copyMessage) {
+
+                    copyMessage.classList.remove("show");
+                    void copyMessage.offsetWidth;
+                    copyMessage.classList.add("show");
+
+                    clearTimeout(copyMessageTimeout);
+                    copyMessageTimeout = setTimeout(() => {
+
+                        copyMessage.classList.remove("show");
+
+                    }, 3000);
+
+                }
+
+            } catch (error) {
+
+                console.error("Copy failed:", error);
+
+            }
+
+        });
+
+    });
 
 
 
