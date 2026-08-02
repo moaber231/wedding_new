@@ -5,11 +5,9 @@
 
 .guest-photo {
 
+    background:white;
 
-    background:var(--black);
-
-
-    color:white;
+    color:#111;
 
 
     padding:
@@ -86,11 +84,9 @@
 
 .upload-box:hover {
 
+    background:#111;
 
-    background:#eee;
-
-
-    color:#111;
+    color:white;
 
 }
 

@@ -131,7 +131,80 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    document.getElementById("iban");
+    const copyMessage =
+        document.querySelector(".copy-message");
+
+
+    let copyMessageTimer;
+
+
+    function showCopyMessage() {
+
+        if (!copyMessage) return;
+
+
+        copyMessage.classList.remove("show");
+        void copyMessage.offsetWidth;
+        copyMessage.classList.add("show");
+
+
+        clearTimeout(copyMessageTimer);
+        copyMessageTimer = setTimeout(() => {
+
+            copyMessage.classList.remove("show");
+
+        }, 3000);
+
+    }
+
+
+    async function copyTextFromElement(element) {
+
+        if (!element) return;
+
+
+        const text = element.textContent.trim();
+
+
+        try {
+
+            await navigator.clipboard.writeText(text);
+
+        } catch (error) {
+
+            const fallbackInput =
+                document.createElement("textarea");
+            fallbackInput.value = text;
+            fallbackInput.setAttribute("readonly", "");
+            fallbackInput.style.position = "absolute";
+            fallbackInput.style.left = "-9999px";
+            document.body.appendChild(fallbackInput);
+            fallbackInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(fallbackInput);
+
+        }
+
+
+        showCopyMessage();
+
+    }
+
+
+    ["iban", "phone"].forEach((id) => {
+
+        const copyElement =
+            document.getElementById(id);
+
+        if (!copyElement) return;
+
+        copyElement.addEventListener("click", () => {
+
+            copyTextFromElement(copyElement);
+
+        });
+
+    });
 
 
 
