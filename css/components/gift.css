@@ -6,6 +6,12 @@
 .gift {
 
 
+    background:var(--black);
+
+
+    color:white;
+
+
     padding:
 
     clamp(60px,10vw,120px)
@@ -66,6 +72,9 @@
     0 auto 45px;
 
 
+    color:#c9c9c9;
+
+
     line-height:2;
 
 
@@ -119,7 +128,7 @@
     border-radius:20px;
 
 
-    background:var(--paper);
+    background:var(--soft-black);
 
 
     box-shadow:
@@ -148,7 +157,7 @@
 
     box-shadow:
 
-    0 25px 50px rgba(0,0,0,.12);
+    0 25px 50px rgba(0,0,0,.28);
 
 }
 
@@ -180,7 +189,11 @@
     border-radius:50%;
 
 
-    background:#f7f7f7;
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
 
 }
 
@@ -197,7 +210,7 @@
     height:32px;
 
 
-    filter:brightness(0);
+    filter:invert(1) brightness(1.12) contrast(1.05);
 
 
     transition:.4s ease;
@@ -244,7 +257,7 @@
     letter-spacing:2px;
 
 
-    color:#777;
+    color:#aaa;
 
 
     margin-bottom:8px;
@@ -268,6 +281,108 @@
 
 
     overflow-wrap:anywhere;
+
+
+    font-size:clamp(.95rem,3vw,1.1rem);
+
+
+}
+
+
+.copy-message {
+
+
+    margin-top:25px;
+
+
+    opacity:0;
+
+
+    transform:translateY(12px) scale(.98);
+
+
+    pointer-events:none;
+
+
+    letter-spacing:2px;
+
+
+    color:white;
+
+
+    transition:
+
+    opacity .35s ease,
+    transform .35s ease;
+
+
+}
+
+
+.copy-message.show {
+
+
+    opacity:1;
+
+
+    transform:translateY(0) scale(1);
+
+
+}
+
+
+.icon-box img {
+
+
+    width:32px;
+
+
+    height:32px;
+
+
+    filter:invert(1) brightness(1.12) contrast(1.05);
+
+
+    transition:.4s ease;
+
+}
+
+
+
+
+.info-item:hover .icon-box img {
+
+
+    animation:
+    wiggle .7s ease;
+
+
+    filter:invert(1) brightness(1.28) contrast(1.1);
+
+}
+
+
+
+
+.info-content {
+
+
+    opacity:1;
+
+
+    transform:translateY(0) scale(1);
+
+
+}
+
+
+.copy-message.hide {
+
+
+    opacity:0;
+
+
+    transform:translateY(-10px) scale(.96);
 
 
 }

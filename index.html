@@ -7,6 +7,14 @@
    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Cinzel:wght@400;500;600&family=EB+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Nikos & Madga wedding invitation">
+    <meta property="og:description" content="Nikos & Madga wedding invitation">
+    <meta property="og:image" content="images/monogram.jpg">
+    <meta property="og:image:alt" content="N&M monogram">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Nikos & Madga wedding invitation">
+    <meta name="twitter:description" content="Nikos & Madga wedding invitation">
+    <meta name="twitter:image" content="images/monogram.jpg">
      
     <link rel="stylesheet" href="css/main.css">
   </head>
@@ -28,14 +36,14 @@
       <!-- GROOM -->
       <div class="person groom reveal">
         <img src="images/groom-baby.jpg" alt="Nikos">
-        <h2> Nikos </h2>
+        <h2> Νίκος </h2>
         <div class="parents-title"> Οι Γονείς </div>
         <div class="family"> Γκώγκος Σταύρος <br> & <br> Παναγιωτίδου Ελένη </div>
       </div>
       <!-- BRIDE -->
       <div class="person bride reveal">
         <img src="images/bride-baby.png" alt="Magda">
-        <h2> Magda </h2>
+        <h2> Μάγδα </h2>
         <div class="parents-title"> Οι Γονείς </div>
         <div class="family"> Τσιολιαρίδης Στέλιος <br> & <br> Χαϊνοπούλου Θωμαΐς </div>
       </div>
@@ -43,7 +51,7 @@
     <!-- KOUMPAROI -->
     <section class="koumparoi reveal">
       <div class="koumparoi-inner">
-        <h2> Τα στέφανα μας <br> θα τα βαλουν ... </h2>
+        <h2> Τα στέφανα μας <br> θα τα βάλουν ... </h2>
         <div class="line"></div>
         <div class="koumparoi-names-wrap">
           <div class="koumparoi-names">
@@ -57,26 +65,85 @@
     </section>
     <!-- WEDDING PROGRAM -->
     <section class="details-section reveal">
-      <div class="paper">
-        <h2> The Ceremony </h2>
-        <div class="line"></div>
-        <div class="event">
-          <span>18:00</span>
-          <a href="https://maps.app.goo.gl/jDvh6xs6m2CeZVVp9?g_st=ifm" class="location-link" target="_blank" rel="noopener noreferrer">
-            <span class="location-text"> Ιερός Ναός Αγ. Παντελεήμονος </span>
-            <img src="images/icons8-google-maps.svg" alt="Google Maps" class="map-icon">
-          </a>
-        </div>
-        <div class="event">
+      <div class="paper program-grid">
+        <article class="program-card ceremony-card">
+          <div class="program-icon-wrap">
+            <img src="images/ceremony/church-svgrepo-com.svg" alt="Ceremony" class="program-icon program-main-icon">
+            <img src="images/ceremony/bride-and-groom-pictogram-3-svgrepo-com.svg" alt="Ceremony detail" class="program-icon program-accent-icon">
+          </div>
+          <h2> The Ceremony </h2>
+          <div class="program-line"></div>
+          <div class="event">
+            <span>18:00</span>
+            <a href="https://maps.app.goo.gl/jDvh6xs6m2CeZVVp9?g_st=ifm" class="location-link" target="_blank" rel="noopener noreferrer">
+              <span class="location-text"> Ιερός Ναός Αγ. Παντελεήμονος </span>
+              <img src="images/icons8-google-maps.svg" alt="Google Maps" class="map-icon">
+            </a>
+          </div>
+        </article>
+        <article class="program-card party-card">
+          <div class="program-icon-wrap">
+            <img src="images/party/party-popper-svgrepo-com.svg" alt="Party" class="program-icon program-main-icon">
+            <img src="images/party/drinks-svgrepo-com (1).svg" alt="Party detail" class="program-icon program-accent-icon">
+          </div>
           <h2>The Party</h2>
-          <span>20:00</span>
-          <a href="https://maps.app.goo.gl/AAm9igpfqR5jQgBX8?g_st=ifm" class="location-link" target="_blank" rel="noopener noreferrer">
-            <span class="location-text"> Bamboo Convention Center </span>
-            <img src="images/icons8-google-maps.svg" alt="Google Maps" class="map-icon">
-          </a>
-        </div>
+          <div class="program-line"></div>
+          <div class="event">
+            <span>20:00</span>
+            <a href="https://maps.app.goo.gl/AAm9igpfqR5jQgBX8?g_st=ifm" class="location-link" target="_blank" rel="noopener noreferrer">
+              <span class="location-text"> Bamboo Convention Center </span>
+              <img src="images/icons8-google-maps.svg" alt="Google Maps" class="map-icon">
+            </a>
+          </div>
+        </article>
       </div>
     </section>
+    <!-- RSVP -->
+    <section class="rsvp reveal">
+      <h2> Θα χαρούμε πολύ να σας έχουμε κοντά μας. </h2>
+      <p> Για την καλύτερη οργάνωση της ημέρας μας, θα σας παρακαλούσαμε να μας ενημερώσετε για την παρουσία σας έως την <br>
+        <strong> 7 Οκτωβρίου 2026 </strong>
+      </p>
+      <button id="openRSVP"> RSVP </button>
+    </section>
+    <!-- RSVP MODAL -->
+    <div class="modal" id="rsvpModal">
+      <div class="modal-content">
+        <button class="close"> × </button>
+        <h2> RSVP </h2>
+        <div class="rsvp-step rsvp-step-intro active" id="rsvpIntroStep">
+          <label> Όνομα </label>
+          <input id="guestName" placeholder="Όνομα">
+          <div class="rsvp-choice-grid">
+            <button type="button" class="rsvp-choice accept" id="showAttendanceFields"> Θα Παρευρεθώ </button>
+            <button type="button" class="rsvp-choice decline" id="showDeclineHeart"> Σας στέλνω την αγάπη μου </button>
+          </div>
+        </div>
+        <div class="rsvp-step rsvp-step-attend" id="rsvpAttendStep">
+          <label> Ενήλικες </label>
+          <select id="adults">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <label> Παιδιά </label>
+          <select id="children">
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+          <div class="modal-buttons">
+            <button id="attend"> Ολοκλήρωση </button>
+          </div>
+        </div>
+        <div class="rsvp-heart" id="declineHeart"> ♥ </div>
+        <div class="answer" id="answer"></div>
+      </div>
+    </div>
     <!-- GIFT -->
     <section class="gift reveal">
       <h2>Δώρο Αγάπης</h2>
@@ -117,47 +184,8 @@
       <div class="preview" id="preview"></div>
       <button class="upload-btn"> Upload Photos </button>
     </section>
-    <!-- RSVP -->
-    <section class="rsvp">
-      <h2> Θα χαρούμε πολύ να σας έχουμε κοντά μας. </h2>
-      <p> Για την καλύτερη οργάνωση της ημέρας μας, θα σας παρακαλούσαμε να μας ενημερώσετε για την παρουσία σας έως την <br>
-        <strong> 1η Οκτωβρίου 2026 </strong>
-      </p>
-      <button id="openRSVP"> RSVP </button>
-    </section>
-    <!-- RSVP MODAL -->
-    <div class="modal" id="rsvpModal">
-      <div class="modal-content">
-        <button class="close"> × </button>
-        <h2> RSVP </h2>
-        <label> Όνομα </label>
-        <input id="guestName" placeholder="Όνομα">
-        <label> Ενήλικες </label>
-        <select id="adults">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-        <label> Παιδιά </label>
-        <select id="children">
-          <option>0</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-        </select>
-        <div class="modal-buttons">
-          <button id="attend"> Θα Παρευρεθώ </button>
-          <button id="decline"> Δεν Μπορώ </button>
-        </div>
-        <div class="answer" id="answer"></div>
-      </div>
-    </div>
     <!-- COUNTDOWN -->
-    <section class="countdown-section">
-      <h2> Until we say "I do" </h2>
+    <section class="countdown-section reveal">
       <div class="countdown">
         <div>
           <span id="days"> 00 </span>
@@ -176,6 +204,8 @@
           <label> Seconds </label>
         </div>
       </div>
+      <h2> Until we say "I do" </h2>
+
     </section>
     <script src="script.js"></script>
   </body>

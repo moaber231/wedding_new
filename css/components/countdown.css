@@ -6,10 +6,10 @@
 .countdown-section {
 
 
-    background:var(--ivory);
+    background:var(--black);
 
 
-    color:#111;
+    color:white;
 
 
     padding:var(--section-padding) 20px;
@@ -135,6 +135,15 @@
     font-size:.75rem;
 
 
-    color:#777;
+    color:#bbb;
+
+}
+
+
+.countdown span {
+
+
+    color:white;
+
 
 }

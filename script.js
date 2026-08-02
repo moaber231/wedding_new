@@ -131,7 +131,97 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    document.getElementById("iban");
+    const copyMessage =
+        document.querySelector(".copy-message");
+
+
+    const copyTargets =
+        document.querySelectorAll("#iban, #phone");
+
+
+    let copyMessageTimer = null;
+
+
+    function showCopyMessage() {
+
+
+        if (!copyMessage) return;
+
+
+        copyMessage.classList.remove("show", "hide");
+
+        void copyMessage.offsetWidth;
+        copyMessage.classList.add("show");
+
+
+        if (copyMessageTimer) {
+
+            clearTimeout(copyMessageTimer);
+
+        }
+
+
+        copyMessageTimer = setTimeout(() => {
+
+            copyMessage.classList.add("hide");
+
+        }, 3000);
+
+    }
+
+
+    function copyToClipboard(text) {
+
+
+        if (navigator.clipboard?.writeText) {
+
+            return navigator.clipboard.writeText(text);
+
+        }
+
+
+        const tempInput = document.createElement("input");
+
+        tempInput.value = text;
+
+        tempInput.style.position = "fixed";
+
+        tempInput.style.opacity = "0";
+
+        document.body.appendChild(tempInput);
+
+        tempInput.select();
+
+        document.execCommand("copy");
+
+        document.body.removeChild(tempInput);
+
+        return Promise.resolve();
+
+    }
+
+
+    copyTargets.forEach(target => {
+
+        target.addEventListener("click", async () => {
+
+            const text = target.textContent.trim();
+
+            try {
+
+                await copyToClipboard(text);
+
+                showCopyMessage();
+
+            } catch (error) {
+
+                console.error("COPY ERROR:", error);
+
+            }
+
+        });
+
+    });
 
 
 
@@ -149,8 +239,41 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("openRSVP");
 
 
+    const rsvpIntroStep =
+        document.getElementById("rsvpIntroStep");
+
+
+    const rsvpAttendStep =
+        document.getElementById("rsvpAttendStep");
+
+
+    const showAttendanceFields =
+        document.getElementById("showAttendanceFields");
+
+
+    const showDeclineHeart =
+        document.getElementById("showDeclineHeart");
+
+
+    const declineHeart =
+        document.getElementById("declineHeart");
+
+
     const close =
     document.querySelector("#rsvpModal .close");
+
+
+    function resetRsvpModal() {
+
+        modal.classList.remove("step-attend", "step-decline");
+        modal.classList.remove("step-success");
+        rsvpIntroStep?.classList.add("active");
+        rsvpAttendStep?.classList.remove("active");
+        declineHeart?.classList.remove("show");
+        answer?.classList.remove("show");
+        answer.innerHTML = "";
+
+    }
 
 
 
@@ -159,6 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
         openRSVP.onclick = () => {
 
             modal.classList.add("active");
+            resetRsvpModal();
 
         };
 
@@ -171,6 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
         close.onclick = () => {
 
             modal.classList.remove("active");
+            resetRsvpModal();
 
         };
 
@@ -185,8 +310,49 @@ document.addEventListener("DOMContentLoaded", () => {
             if (e.target === modal) {
 
                 modal.classList.remove("active");
+                resetRsvpModal();
 
             }
+
+        };
+
+    }
+
+
+    if (showAttendanceFields) {
+
+        showAttendanceFields.onclick = () => {
+
+            modal.classList.add("step-attend");
+            modal.classList.remove("step-decline");
+            rsvpIntroStep?.classList.remove("active");
+            rsvpAttendStep?.classList.add("active");
+            declineHeart?.classList.remove("show");
+
+        };
+
+    }
+
+
+    if (showDeclineHeart) {
+
+        showDeclineHeart.onclick = () => {
+
+            modal.classList.add("step-decline");
+            modal.classList.remove("step-attend");
+            rsvpIntroStep?.classList.remove("active");
+            rsvpAttendStep?.classList.remove("active");
+            declineHeart?.classList.add("show");
+            answer?.classList.remove("show");
+            answer.innerHTML = "";
+
+            setTimeout(() => {
+
+                declineHeart?.classList.remove("show");
+                modal.classList.remove("active");
+                resetRsvpModal();
+
+            }, 2800);
 
         };
 
@@ -285,6 +451,10 @@ document.addEventListener("DOMContentLoaded", () => {
 `;
 
 
+                modal.classList.remove("step-attend");
+                modal.classList.add("step-success");
+
+
             } else {
 
 
@@ -301,6 +471,9 @@ document.addEventListener("DOMContentLoaded", () => {
 `;
 
 
+                modal.classList.add("step-decline");
+
+
             }
 
 
@@ -313,6 +486,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 modal.classList.remove("active");
+
+
+                modal.classList.remove("step-success", "step-decline", "step-attend");
 
 
                 answer.classList.remove("show");

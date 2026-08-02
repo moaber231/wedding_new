@@ -206,3 +206,145 @@
     }
 
 }
+
+
+
+@keyframes textRise {
+
+
+    0% {
+
+
+        opacity:0;
+
+        transform:translateY(22px) scale(.985);
+
+        filter:blur(7px);
+
+    }
+
+
+    65% {
+
+
+        opacity:1;
+
+        transform:translateY(-2px) scale(1.01);
+
+        filter:blur(0);
+
+    }
+
+
+    100% {
+
+
+        opacity:1;
+
+        transform:none;
+
+        filter:none;
+
+    }
+
+}
+
+
+
+@keyframes sectionHoverFloat {
+
+
+    0%,
+    100% {
+
+
+        transform:translateY(0);
+
+
+    }
+
+
+    50% {
+
+
+        transform:translateY(-4px);
+
+
+    }
+
+}
+
+
+
+@keyframes iconDrift {
+
+
+    0% {
+
+
+        transform:translateY(0) rotate(0) scale(1);
+
+
+    }
+
+
+    50% {
+
+
+        transform:translateY(-5px) rotate(2deg) scale(1.05);
+
+
+    }
+
+
+    100% {
+
+
+        transform:translateY(0) rotate(0) scale(1);
+
+
+    }
+
+}
+
+
+
+@keyframes iconCollageEnter {
+
+
+    0% {
+
+
+        opacity:0;
+
+
+        transform:translateY(18px) scale(.78) rotate(-10deg);
+
+
+    }
+
+
+    70% {
+
+
+        opacity:1;
+
+
+        transform:translateY(-2px) scale(1.04) rotate(2deg);
+
+
+    }
+
+
+    100% {
+
+
+        opacity:1;
+
+
+        transform:none;
+
+
+    }
+
+}

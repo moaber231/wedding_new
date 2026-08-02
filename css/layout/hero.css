@@ -55,6 +55,41 @@
 }
 
 
+.hero-title > * {
+
+    animation:textRise .9s cubic-bezier(.16,1,.3,1) both;
+
+}
+
+
+.hero-title h1 {
+
+    animation-delay:.08s;
+
+}
+
+
+.hero-title .couple-names {
+
+    animation-delay:.18s;
+
+}
+
+
+.hero-title .date {
+
+    animation-delay:.28s;
+
+}
+
+
+.hero:hover .hero-title > * {
+
+    transform:translateY(-2px);
+
+}
+
+
 
 
 .small-title {
