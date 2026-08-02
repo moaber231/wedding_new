@@ -2,371 +2,293 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-/* =====================================
-GOOGLE SHEET CONNECTION
-===================================== */
+    /* =====================================
+    GOOGLE SHEET CONNECTION
+    ===================================== */
 
 
-const GOOGLE_SCRIPT_URL = 
-"https://script.google.com/macros/s/AKfycbz6lypzyOrUD-mSEL_JhC4zxQyRPyQP6ZESH7qIpeHvkJQdTAtjtM3UXw3mGkcNMW-W/exec";
+    const GOOGLE_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbwO-icwrbunRo_QrxBhkOrq1VoOo9p7b-ZiJdcN4FTEs9CYemNpK1LlSlRSqTWJ-GRr/exec";
 
 
 
-function submitRSVP(attending){
+    /* =====================================
+    SCROLL REVEAL
+    ===================================== */
 
-    const answer=document.getElementById("answer");
 
-    answer.classList.add("show");
+    const revealElements =
+        document.querySelectorAll(".reveal");
 
-    if(attending){
 
-        answer.innerHTML="❤️<br><br>Θα χαρούμε να σε δούμε από κοντά!";
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach(entry => {
+
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+                        entry.target.classList.add("active");
+                        if (entry.target.classList.contains("koumparoi")) {
+
+                            entry.target.querySelector(".stefana-icon img")
+                                ?.classList.add("show");
+
+                        }
+
+                    }
+
+
+                });
+
+
+            }, {
+                threshold: 0.15
+            }
+        );
+
+
+
+    revealElements.forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
+
+
+
+
+    /* =====================================
+    COUNTDOWN
+    ===================================== */
+
+
+    const weddingDate =
+        new Date(
+            "November 7, 2026 18:00:00"
+        ).getTime();
+
+
+
+    function updateCountdown() {
+
+
+        const now =
+            new Date().getTime();
+
+
+        const distance =
+            weddingDate - now;
+
+
+
+        if (distance <= 0) return;
+
+
+
+
+        document.getElementById("days").textContent =
+            String(
+                Math.floor(distance / (1000 * 60 * 60 * 24))
+            )
+            .padStart(2, "0");
+
+
+
+        document.getElementById("hours").textContent =
+            String(
+                Math.floor(distance / (1000 * 60 * 60) % 24)
+            )
+            .padStart(2, "0");
+
+
+
+        document.getElementById("minutes").textContent =
+            String(
+                Math.floor(distance / (1000 * 60) % 60)
+            )
+            .padStart(2, "0");
+
+
+
+        document.getElementById("seconds").textContent =
+            String(
+                Math.floor(distance / 1000 % 60)
+            )
+            .padStart(2, "0");
 
     }
 
-    else{
 
-        answer.innerHTML="🤍<br><br>Κρίμα που δεν θα σε δούμε.";
+    setInterval(updateCountdown, 1000);
+
+    updateCountdown();
+
+
+
+
+    document.getElementById("iban");
+
+
+
+
+    /* =====================================
+    RSVP MODAL
+    ===================================== */
+
+
+    const modal =
+        document.getElementById("rsvpModal");
+
+
+    const openRSVP =
+        document.getElementById("openRSVP");
+
+
+    const close =
+    document.querySelector("#rsvpModal .close");
+
+
+
+    if (openRSVP) {
+
+        openRSVP.onclick = () => {
+
+            modal.classList.add("active");
+
+        };
 
     }
 
-    setTimeout(()=>{
 
-        rsvpModal.classList.remove("active");
 
-        answer.classList.remove("show");
+    if (close) {
 
-        answer.innerHTML="";
+        close.onclick = () => {
 
-    },2000);
+            modal.classList.remove("active");
 
-}
+        };
 
+    }
 
-/* =====================================
-SCROLL REVEAL
-===================================== */
 
 
-const revealElements =
-document.querySelectorAll(".reveal");
+    if (modal) {
 
+        modal.onclick = (e) => {
 
+            if (e.target === modal) {
 
-const revealObserver =
-new IntersectionObserver(
-(entries)=>{
+                modal.classList.remove("active");
 
-entries.forEach(entry=>{
+            }
 
+        };
 
-if(entry.isIntersecting){
+    }
 
-entry.target.classList.add("visible");
 
-}
 
 
-});
+    /* =====================================
+    SEND RSVP TO GOOGLE SHEET
+    ===================================== */
 
 
-},
-{
-threshold:0.15
-}
-);
+    const nameInput =
+        document.getElementById("guestName");
 
 
+    const adultsInput =
+        document.getElementById("adults");
 
-revealElements.forEach(element=>{
 
-revealObserver.observe(element);
+    const childrenInput =
+        document.getElementById("children");
 
-});
 
+    const answer =
+        document.querySelector(".answer");
 
 
 
 
+    async function sendRSVP(status) {
 
 
-/* =====================================
-COUNTDOWN
-===================================== */
+        const data = {
 
+            name: nameInput.value.trim(),
 
-const weddingDate =
-new Date(
-"November 7, 2026 18:00:00"
-).getTime();
+            adults: adultsInput.value,
 
+            children: childrenInput.value,
 
+            status: status
 
-function updateCountdown(){
+        };
 
 
-const now =
-new Date().getTime();
 
+        console.log("Sending RSVP:");
+        console.log(data);
 
-const distance =
-weddingDate - now;
 
 
+        try {
 
-if(distance <= 0) return;
 
+            const response = await fetch(
+                GOOGLE_SCRIPT_URL, {
 
+                    method: "POST",
 
+                    mode: "no-cors",
 
-document.getElementById("days").textContent =
-String(
-Math.floor(distance/(1000*60*60*24))
-)
-.padStart(2,"0");
+                    headers: {
 
+                        "Content-Type": "application/x-www-form-urlencoded"
 
+                    },
 
-document.getElementById("hours").textContent =
-String(
-Math.floor(distance/(1000*60*60)%24)
-)
-.padStart(2,"0");
+                    body: new URLSearchParams(data).toString()
 
 
+                });
 
-document.getElementById("minutes").textContent =
-String(
-Math.floor(distance/(1000*60)%60)
-)
-.padStart(2,"0");
 
 
+            console.log(
+                "RSVP SENT"
+            );
 
-document.getElementById("seconds").textContent =
-String(
-Math.floor(distance/1000%60)
-)
-.padStart(2,"0");
 
-}
 
+            if (status === "Coming") {
 
-setInterval(updateCountdown,1000);
 
-updateCountdown();
-
-
-
-
-
-
-
-
-/* =====================================
-IBAN COPY
-===================================== */
-
-
-const iban =
-document.getElementById("iban");
-
-
-const copyMessage =
-document.querySelector(".copy-message");
-
-
-
-if(iban){
-
-
-iban.onclick=()=>{
-
-
-navigator.clipboard.writeText(
-iban.innerText.trim()
-);
-
-
-
-copyMessage.classList.add("show");
-
-
-
-setTimeout(()=>{
-
-copyMessage.classList.remove("show");
-
-},2000);
-
-
-
-};
-
-
-}
-
-
-
-
-
-
-
-
-
-/* =====================================
-RSVP MODAL
-===================================== */
-
-
-const modal =
-document.getElementById("rsvpModal");
-
-
-
-const openRSVP =
-document.getElementById("openRSVP");
-
-
-
-const close =
-document.querySelector(".close");
-
-
-
-
-openRSVP.onclick=()=>{
-
-modal.classList.add("active");
-
-};
-
-
-
-close.onclick=()=>{
-
-modal.classList.remove("active");
-
-};
-
-
-
-
-
-modal.onclick=(e)=>{
-
-if(e.target===modal){
-
-modal.classList.remove("active");
-
-}
-
-};
-
-
-
-
-
-
-
-
-
-/* =====================================
-SEND RSVP TO GOOGLE SHEET
-===================================== */
-
-
-const nameInput =
-document.getElementById("guestName");
-
-
-const adultsInput =
-document.getElementById("adults");
-
-
-const childrenInput =
-document.getElementById("children");
-
-
-const answer =
-document.querySelector(".answer");
-
-
-
-
-
-
-async function sendRSVP(status){
-
-
-const data={
-
-
-name:
-nameInput.value,
-
-
-adults:
-adultsInput.value,
-
-
-children:
-childrenInput.value,
-
-
-status:status
-
-
-};
-
-
-
-
-try{
-
-
-await fetch(
-GOOGLE_SCRIPT_URL,
-{
-method:"POST",
-
-mode:"no-cors",
-
-headers:{
-"Content-Type":"application/x-www-form-urlencoded"
-},
-
-body:
-new URLSearchParams(data)
-
-}
-);
-
-
-
-
-if(status==="Coming"){
-
-
-answer.innerHTML=`
+                answer.innerHTML = `
 
 <h3>
 Σας περιμένουμε!
 </h3>
 
 <p>
-Χαρούμαστε που θα είστε μαζί μας.
+Χαιρόμαστε που θα είστε μαζί μας.
 </p>
 
 `;
 
 
-
-}
-else{
+            } else {
 
 
-answer.innerHTML=`
+                answer.innerHTML = `
 
 <h3>
 Λάβαμε την απάντησή σας.
@@ -379,188 +301,212 @@ answer.innerHTML=`
 `;
 
 
-
-}
-
+            }
 
 
-}
+
+            answer.classList.add("show");
 
 
-catch(error){
+
+            setTimeout(() => {
 
 
-console.log(error);
+                modal.classList.remove("active");
 
 
-answer.innerHTML=`
+                answer.classList.remove("show");
 
+
+                answer.innerHTML = "";
+
+
+            }, 2500);
+
+
+
+        } catch (error) {
+
+
+            console.error(
+                "RSVP ERROR:",
+                error
+            );
+
+
+
+            answer.innerHTML =
+
+                `
 <p>
-Υπήρξε ένα πρόβλημα.
+Υπήρξε πρόβλημα.
 Παρακαλώ δοκιμάστε ξανά.
 </p>
-
 `;
 
 
-}
 
+        }
 
 
-}
 
+    }
 
 
 
 
+    const attend =
+        document.getElementById("attend");
 
-document
-.getElementById("attend")
-.onclick=()=>{
 
+    if (attend) {
 
-sendRSVP("Coming");
+        attend.onclick = () => {
 
+            sendRSVP("Coming");
 
-};
+        };
 
+    }
 
 
 
+    const decline =
+        document.getElementById("decline");
 
 
+    if (decline) {
 
-document
-.getElementById("decline")
-.onclick=()=>{
+        decline.onclick = () => {
 
+            sendRSVP("Not Coming");
 
-sendRSVP("Not Coming");
+        };
 
+    }
 
-};
 
 
 
+    /* =====================================
+    PHOTO UPLOAD
+    ===================================== */
 
 
+    const fileInput =
+        document.getElementById("fileInput");
 
 
+    const dropZone =
+        document.getElementById("dropZone");
 
 
-/* =====================================
-PHOTO UPLOAD
-===================================== */
+    const preview =
+        document.getElementById("preview");
 
 
-const fileInput =
-document.getElementById("fileInput");
 
 
-const dropZone =
-document.getElementById("dropZone");
+    function showImages(files) {
 
 
-const preview =
-document.getElementById("preview");
 
+        Array.from(files).forEach(file => {
 
 
+            if (!file.type.startsWith("image"))
+                return;
 
 
-function showImages(files){
 
+            const reader =
+                new FileReader();
 
 
-Array.from(files).forEach(file=>{
 
+            reader.onload = (e) => {
 
-if(!file.type.startsWith("image"))
-return;
 
+                const img =
+                    document.createElement("img");
 
 
-const reader =
-new FileReader();
+                img.src = e.target.result;
 
 
+                preview.appendChild(img);
 
-reader.onload=(e)=>{
 
+            };
 
-const img =
-document.createElement("img");
 
 
-img.src=e.target.result;
+            reader.readAsDataURL(file);
 
 
-preview.appendChild(img);
 
+        });
 
-};
 
 
+    }
 
-reader.readAsDataURL(file);
 
 
 
-});
+    if (dropZone) {
 
 
 
-}
+        dropZone.onclick = () => {
 
+            fileInput.click();
 
+        };
 
 
 
-if(dropZone){
+        fileInput.onchange = (e) => {
 
+            showImages(e.target.files);
 
+        };
 
-dropZone.onclick=()=>{
 
-fileInput.click();
 
-};
+        dropZone.ondragover = (e) => {
 
+            e.preventDefault();
 
+        };
 
-fileInput.onchange=(e)=>{
 
-showImages(e.target.files);
 
-};
+        dropZone.ondrop = (e) => {
 
 
+            e.preventDefault();
 
-dropZone.ondragover=(e)=>{
 
-e.preventDefault();
+            showImages(
+                e.dataTransfer.files
+            );
 
-};
 
+        };
 
 
-dropZone.ondrop=(e)=>{
 
+    }
+    document.querySelectorAll(".person img").forEach(img => {
 
-e.preventDefault();
+        img.addEventListener("click", () => {
 
+            img.classList.toggle("colored");
 
-showImages(
-e.dataTransfer.files
-);
+        });
 
-
-};
-
-
-
-}
-
+    });
 
 
 });

@@ -1,0 +1,140 @@
+/* =========================
+   HERO SECTION
+========================= */
+
+
+.hero {
+
+    height:100vh;
+
+    min-height:700px;
+
+
+    background:
+
+    linear-gradient(
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.75)
+    ),
+
+    url("../../images/couple-1.jpg");
+
+
+    background-size:cover;
+
+    background-position:center;
+
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+
+    position:relative;
+
+    z-index:3;
+
+
+    color:white;
+
+}
+
+
+
+
+
+.hero-title {
+
+    text-align:center;
+
+    animation:
+    heroReveal 2s ease forwards;
+
+}
+
+
+
+
+.small-title {
+
+    font-family:var(--cinzel);
+
+    letter-spacing:10px;
+
+    font-size:.9rem;
+
+}
+
+
+
+
+
+.hero h1 {
+
+
+    font-family:var(--title);
+
+    font-style:italic;
+
+    font-weight:400;
+
+
+    font-size:
+
+    clamp(
+        3rem,
+        8vw,
+        7rem
+    );
+
+
+    line-height:.85;
+
+
+    margin:25px 0;
+
+}
+
+
+
+
+.couple-names {
+
+
+    font-family:var(--title);
+
+    font-style:italic;
+
+    font-weight:400;
+
+
+    font-size:
+
+    clamp(
+        2rem,
+        4vw,
+        3.5rem
+    );
+
+
+    letter-spacing:3px;
+
+    margin:20px 0;
+
+}
+
+
+
+
+.date {
+
+
+    font-family:var(--cinzel);
+
+    letter-spacing:7px;
+
+    margin-top:30px;
+
+}

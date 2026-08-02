@@ -1,0 +1,536 @@
+/* =========================
+   TABLET
+========================= */
+
+
+@media (max-width:900px){
+
+
+    .maps-grid {
+
+        grid-template-columns:1fr;
+
+        max-width:600px;
+
+    }
+
+
+
+    .maps-section {
+
+        padding:90px 18px;
+
+    }
+
+
+
+    .map-card iframe {
+
+        height:280px;
+
+    }
+
+
+
+}
+
+
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+
+@media(max-width:768px){
+
+
+
+/* HERO */
+
+
+.hero {
+
+    min-height:100svh;
+
+}
+
+
+
+.hero h1 {
+
+    font-size:3.5rem;
+
+}
+
+
+
+.small-title {
+
+    letter-spacing:6px;
+
+}
+
+
+
+.date {
+
+    letter-spacing:4px;
+
+}
+
+
+
+
+
+/* COUPLE */
+
+
+.couple {
+
+    flex-direction:column;
+
+}
+
+
+
+.person {
+
+
+    min-height:auto;
+
+
+    padding:
+
+    50px 15px;
+
+}
+
+
+
+.person img {
+
+
+    width:90%;
+
+
+    max-width:250px;
+
+
+    height:auto;
+
+
+    aspect-ratio:4/5;
+
+}
+
+
+
+.person h2 {
+
+
+    font-size:2.5rem;
+
+}
+
+
+
+
+
+.parents-title {
+
+
+    letter-spacing:2px;
+
+
+    font-size:.7rem;
+
+}
+
+
+
+
+
+.family {
+
+
+    font-size:.9rem;
+
+
+    line-height:1.7;
+
+}
+
+
+
+
+
+/* COUNTDOWN */
+
+
+.countdown {
+
+
+    gap:18px;
+
+}
+
+
+
+.countdown div {
+
+
+    min-width:75px;
+
+
+    padding:10px;
+
+}
+
+
+
+.countdown span {
+
+
+    font-size:2.8rem;
+
+}
+
+
+
+.countdown label {
+
+
+    font-size:.6rem;
+
+
+    letter-spacing:2px;
+
+}
+
+
+
+
+
+/* KOUMPAROI */
+
+
+.koumparoi {
+
+
+    padding:80px 18px;
+
+}
+
+
+
+.koumparoi-names-wrap {
+
+
+    flex-direction:column;
+
+
+    gap:15px;
+
+}
+
+
+
+.koumparoi-mini-photo {
+
+
+    width:90px;
+
+
+    height:90px;
+
+
+    order:-1;
+
+}
+
+
+
+.koumparoi-mini-photo img {
+
+
+    transform:rotate(20deg);
+
+}
+
+
+
+
+
+/* GIFT */
+
+
+.gift {
+
+
+    padding:70px 18px;
+
+}
+
+
+
+.info-item {
+
+
+    padding:18px;
+
+
+    gap:15px;
+
+
+    border-radius:16px;
+
+}
+
+
+
+.icon-box {
+
+
+    width:52px;
+
+
+    height:52px;
+
+
+    min-width:52px;
+
+}
+
+
+
+.icon-box img {
+
+
+    width:25px;
+
+
+    height:25px;
+
+}
+
+
+
+.copy-box {
+
+
+    letter-spacing:1px;
+
+}
+
+
+
+
+
+/* RSVP */
+
+
+.rsvp {
+
+
+    padding:90px 20px;
+
+}
+
+
+
+.rsvp h2 {
+
+
+    font-size:2.3rem;
+
+}
+
+
+
+.rsvp p {
+
+
+    font-size:.95rem;
+
+}
+
+
+
+#openRSVP {
+
+
+    width:100%;
+
+
+    max-width:320px;
+
+}
+
+
+
+
+
+/* MODAL */
+
+
+.modal-content {
+
+
+    width:94%;
+
+
+    padding:
+
+    35px 24px;
+
+}
+
+
+
+.modal-content h2 {
+
+
+    font-size:2.2rem;
+
+}
+
+
+
+.modal-buttons {
+
+
+    flex-direction:column;
+
+}
+
+
+
+#attend,
+#decline {
+
+
+    width:100%;
+
+}
+
+
+
+.close {
+
+
+    width:36px;
+
+
+    height:36px;
+
+
+    top:12px;
+
+
+    right:12px;
+
+}
+
+
+
+
+
+/* MAPS */
+
+
+.maps-section {
+
+
+    padding:70px 15px;
+
+}
+
+
+
+.maps-section h2 {
+
+
+    font-size:2.1rem;
+
+}
+
+
+
+.maps-subtitle {
+
+
+    margin-bottom:35px;
+
+
+    font-size:.75rem;
+
+}
+
+
+
+.map-card {
+
+
+    padding:18px;
+
+}
+
+
+
+.map-card iframe {
+
+
+    height:240px;
+
+}
+
+
+
+.map-button {
+
+
+    width:100%;
+
+
+    padding:14px;
+
+}
+
+
+
+
+
+}
+@media(max-width:600px){
+
+
+.koumparoi-names-wrap{
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+
+.koumparoi-mini-photo{
+
+    order:-1;
+
+    width:100px;
+
+    height:100px;
+
+}
+
+
+.koumparoi-names p{
+
+    font-size:1.25rem;
+
+}
+
+
+}

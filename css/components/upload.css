@@ -1,0 +1,154 @@
+/* =========================
+   GUEST PHOTO UPLOAD
+========================= */
+
+
+.guest-photo {
+
+
+    background:var(--black);
+
+
+    color:white;
+
+
+    padding:
+
+    var(--section-padding)
+    30px;
+
+
+    text-align:center;
+
+
+    position:relative;
+
+
+    z-index:3;
+
+}
+
+
+
+
+
+.guest-photo h2 {
+
+
+    font-family:var(--title);
+
+
+    font-style:italic;
+
+
+    font-size:
+
+    clamp(
+        2.5rem,
+        5vw,
+        3rem
+    );
+
+
+}
+
+
+
+
+
+.upload-box {
+
+
+    max-width:600px;
+
+
+    margin:50px auto;
+
+
+    padding:70px 20px;
+
+
+    border:
+
+    1px dashed #555;
+
+
+    cursor:pointer;
+
+
+    transition:.4s ease;
+
+}
+
+
+
+
+
+.upload-box:hover {
+
+
+    background:#eee;
+
+
+    color:#111;
+
+}
+
+
+
+
+
+.upload-box span {
+
+
+    font-size:4rem;
+
+}
+
+
+
+
+
+.upload-box input {
+
+
+    display:none;
+
+}
+
+
+
+
+
+.preview {
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    flex-wrap:wrap;
+
+
+    gap:15px;
+
+}
+
+
+
+
+
+.preview img {
+
+
+    width:130px;
+
+
+    height:130px;
+
+
+    object-fit:cover;
+
+}

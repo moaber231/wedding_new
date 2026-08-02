@@ -1,0 +1,62 @@
+:root {
+
+    /* =========================
+       COLORS
+    ========================= */
+
+    --black:#0b0b0b;
+    --soft-black:#161616;
+
+    --ivory:#f5f3ee;
+    --paper:#ffffff;
+
+    --grey:#8c8982;
+    --light-grey:#ddd;
+
+
+    /* =========================
+       TYPOGRAPHY
+    ========================= */
+
+
+
+
+   --title:"Bodoni Moda", serif;
+
+   --heading:"Cinzel", serif;
+
+   --body:"EB Garamond", serif;
+
+    /* =========================
+       SPACING SYSTEM
+    ========================= */
+
+    --section-padding:120px;
+
+    --container:1200px;
+
+
+    /* =========================
+       EFFECTS
+    ========================= */
+
+    --shadow-soft:
+    0 20px 60px rgba(0,0,0,.12);
+
+
+    --shadow-luxury:
+    0 40px 120px rgba(0,0,0,.25);
+
+
+    --transition:
+    .4s ease;
+
+
+    /* =========================
+       BORDER
+    ========================= */
+
+    --border-light:
+    1px solid rgba(0,0,0,.12);
+
+}

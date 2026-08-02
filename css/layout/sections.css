@@ -1,0 +1,269 @@
+ /* =========================
+    GLOBAL SECTIONS
+========================= */
+
+
+section {
+
+    position:relative;
+
+    z-index:3;
+
+}
+
+
+
+
+
+/* =========================
+   INTRO SECTION
+========================= */
+
+
+.intro {
+
+
+    min-height:60vh;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    text-align:center;
+
+
+    padding:80px 20px;
+
+}
+
+
+
+
+
+.intro p {
+
+
+    max-width:1000px;
+
+
+    font-family:var(--title);
+
+
+    font-style:italic;
+
+
+    font-size:
+
+    clamp(
+        2rem,
+        5vw,
+        4rem
+    );
+
+
+    line-height:1.4;
+
+}
+
+
+
+
+
+/* =========================
+   PAPER / PROGRAM CARD
+========================= */
+
+
+.details-section {
+
+
+    background:var(--black);
+
+
+    color:white;
+
+
+    padding:
+
+    var(--section-padding)
+    20px;
+
+}
+
+
+
+
+
+.paper {
+
+
+    max-width:850px;
+
+
+    margin:auto;
+
+
+    padding:80px 40px;
+
+
+    background:var(--black);
+
+
+    color:white;
+
+
+    text-align:center;
+
+
+}
+
+
+
+
+
+.paper h2 {
+
+
+    font-family:var(--title);
+
+
+    font-style:italic;
+
+
+    font-size:4rem;
+
+}
+
+
+
+
+
+.timeline {
+
+
+    max-width:600px;
+
+
+    margin:auto;
+
+}
+
+
+
+
+
+.event {
+
+
+    padding:35px 0;
+
+
+    border-bottom:
+
+    1px solid rgba(255,255,255,.2);
+
+}
+
+
+
+
+
+.event:last-child {
+
+
+    border:none;
+
+}
+
+
+
+
+
+.event span {
+
+
+    font-family:var(--title);
+
+
+    font-size:3rem;
+
+}
+
+
+
+
+
+.event h3 {
+
+
+    font-family:var(--cinzel);
+
+
+    font-weight:500;
+
+
+    letter-spacing:2px;
+
+}
+
+
+
+
+
+.event p {
+
+
+    line-height:2;
+
+
+    color:#aaa;
+
+}
+
+
+
+
+
+/* =========================
+   REVEAL SYSTEM
+========================= */
+
+
+.reveal {
+
+
+    opacity:0;
+
+
+    transform:
+
+    translateY(50px);
+
+
+    transition:
+
+    opacity 1s ease,
+    transform 1s ease;
+
+}
+
+
+
+
+
+.reveal.active,
+.reveal.visible {
+
+
+    opacity:1;
+
+
+    transform:none;
+
+}

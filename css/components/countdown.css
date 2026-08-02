@@ -1,0 +1,140 @@
+/* =========================
+   COUNTDOWN
+========================= */
+
+
+.countdown-section {
+
+
+    background:var(--ivory);
+
+
+    color:#111;
+
+
+    padding:var(--section-padding) 20px;
+
+
+    text-align:center;
+
+
+    position:relative;
+
+    z-index:3;
+
+}
+
+
+
+
+
+.countdown-section h2 {
+
+
+    font-family:var(--title);
+
+
+    font-style:italic;
+
+
+    font-size:
+
+    clamp(
+        2.8rem,
+        5vw,
+        4rem
+    );
+
+
+    margin-bottom:60px;
+
+}
+
+
+
+
+
+.countdown {
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    flex-wrap:wrap;
+
+
+    gap:55px;
+
+}
+
+
+
+
+
+.countdown div {
+
+
+    min-width:110px;
+
+
+    padding:25px 10px;
+
+}
+
+
+
+
+
+.countdown span {
+
+
+    display:block;
+
+
+    font-family:var(--title);
+
+
+    font-size:4.5rem;
+
+
+    font-weight:700;
+
+
+    line-height:1;
+
+}
+
+
+
+
+
+.countdown label {
+
+
+    display:block;
+
+
+    margin-top:12px;
+
+
+    font-family:var(--cinzel);
+
+
+    text-transform:uppercase;
+
+
+    letter-spacing:4px;
+
+
+    font-size:.75rem;
+
+
+    color:#777;
+
+}

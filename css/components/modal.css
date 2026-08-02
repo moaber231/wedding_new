@@ -1,0 +1,436 @@
+/* =========================
+   RSVP MODAL
+========================= */
+
+
+.modal {
+
+
+    position:fixed;
+
+
+    inset:0;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    background:
+
+    rgba(0,0,0,.72);
+
+
+    backdrop-filter:blur(8px);
+
+
+    z-index:999;
+
+
+    opacity:0;
+
+
+    visibility:hidden;
+
+
+    transition:.5s ease;
+
+}
+
+
+
+
+
+.modal.active {
+
+
+    opacity:1;
+
+
+    visibility:visible;
+
+}
+
+
+
+
+
+.modal-content {
+
+
+    position:relative;
+
+
+    width:min(92%,520px);
+
+
+    background:white;
+
+
+    padding:60px;
+
+
+    box-shadow:
+
+    var(--shadow-luxury);
+
+
+    opacity:0;
+
+
+    transform:
+
+    translateY(40px)
+    scale(.96);
+
+
+    transition:.5s ease;
+
+}
+
+
+
+
+
+.modal.active .modal-content {
+
+
+    opacity:1;
+
+
+    transform:none;
+
+}
+
+
+
+
+
+.modal-content h2 {
+
+
+    font-family:var(--title);
+
+
+    font-style:italic;
+
+
+    font-size:3rem;
+
+
+    text-align:center;
+
+
+    margin-bottom:40px;
+
+}
+
+
+
+
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+
+.close {
+
+
+    position:absolute;
+
+
+    top:18px;
+
+
+    right:18px;
+
+
+    width:42px;
+
+
+    height:42px;
+
+
+    border-radius:50%;
+
+
+    border:
+
+    1px solid #ddd;
+
+
+    background:white;
+
+
+    color:#555;
+
+
+    display:flex;
+
+
+    justify-content:center;
+
+
+    align-items:center;
+
+
+    transition:.3s;
+
+}
+
+
+
+
+
+.close:hover {
+
+
+    background:#111;
+
+
+    color:white;
+
+
+    transform:rotate(90deg);
+
+}
+
+
+
+
+
+/* =========================
+   FORM
+========================= */
+
+
+.modal-content label {
+
+
+    display:block;
+
+
+    text-align:left;
+
+
+    margin:
+
+    15px 0 8px;
+
+
+    font-family:var(--cinzel);
+
+
+    font-size:.72rem;
+
+
+    letter-spacing:3px;
+
+
+    text-transform:uppercase;
+
+
+    color:#777;
+
+}
+
+
+
+
+
+.modal-content input,
+.modal-content select {
+
+
+    width:100%;
+
+
+    padding:18px 0;
+
+
+    border:none;
+
+
+    border-bottom:
+
+    1px solid #ddd;
+
+
+    background:transparent;
+
+
+    font-family:var(--body);
+
+
+    outline:none;
+
+
+    transition:.3s;
+
+}
+
+
+
+
+
+.modal-content input:focus,
+.modal-content select:focus {
+
+
+    border-bottom-color:#111;
+
+}
+
+
+
+
+
+/* =========================
+   MODAL ACTIONS
+========================= */
+
+
+.modal-buttons {
+
+
+    display:flex;
+
+
+    gap:18px;
+
+
+    margin-top:40px;
+
+}
+
+
+
+
+
+#attend,
+#decline {
+
+
+    flex:1;
+
+
+    padding:18px;
+
+
+    font-family:var(--cinzel);
+
+
+    letter-spacing:2px;
+
+
+    transition:.3s;
+
+}
+
+
+
+
+
+#attend {
+
+
+    background:#111;
+
+
+    color:white;
+
+
+}
+
+
+
+
+
+#decline {
+
+
+    background:white;
+
+
+    color:#111;
+
+
+    border:
+
+    1px solid #bbb;
+
+}
+
+
+
+
+
+#attend:hover,
+#decline:hover {
+
+
+    transform:translateY(-3px);
+
+}
+
+
+
+
+
+/* =========================
+   ANSWER MESSAGE
+========================= */
+
+
+.answer {
+
+
+    margin-top:35px;
+
+
+    text-align:center;
+
+
+    font-family:var(--title);
+
+
+    font-style:italic;
+
+
+    font-size:1.8rem;
+
+
+    color:#111;
+
+
+    opacity:0;
+
+
+    transform:
+
+    translateY(15px);
+
+
+    transition:.5s ease;
+
+}
+
+
+
+
+
+.answer.show {
+
+
+    opacity:1;
+
+
+    transform:none;
+
+}

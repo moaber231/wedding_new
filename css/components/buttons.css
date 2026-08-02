@@ -1,0 +1,100 @@
+/* =========================
+   GLOBAL BUTTONS
+========================= */
+
+
+button {
+
+
+    background:#111;
+
+
+    color:white;
+
+
+    border:none;
+
+
+    padding:
+
+    18px 45px;
+
+
+    font-family:var(--cinzel);
+
+
+    letter-spacing:2px;
+
+
+    cursor:pointer;
+
+
+    transition:.4s ease;
+
+}
+
+
+
+
+
+button:hover {
+
+
+    transform:translateY(-5px);
+
+}
+
+
+
+
+
+/* =========================
+   RSVP BUTTON
+========================= */
+
+
+#openRSVP {
+
+
+    background:white;
+
+
+    color:#111;
+
+
+    border:
+
+    1px solid white;
+
+
+    padding:
+
+    18px 60px;
+
+
+    letter-spacing:4px;
+
+
+    text-transform:uppercase;
+
+
+}
+
+
+
+
+
+#openRSVP:hover {
+
+
+    background:transparent;
+
+
+    color:white;
+
+
+    box-shadow:
+
+    0 10px 30px rgba(255,255,255,.15);
+
+}

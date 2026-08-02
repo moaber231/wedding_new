@@ -1,0 +1,24 @@
+/* =========================
+   MAIN CSS ENTRY
+========================= */
+
+@import url("./core/variables.css");
+@import url("./core/reset.css");
+@import url("./core/animations.css");
+
+@import url("./layout/hero.css");
+@import url("./layout/sections.css");
+
+@import url("./components/couple.css");
+@import url("./components/countdown.css");
+@import url("./components/koumparoi.css");
+@import url("./components/gift.css");
+@import url("./components/upload.css");
+@import url("./components/buttons.css");
+@import url("./components/rsvp.css");
+@import url("./components/modal.css");
+@import url("./components/maps.css");
+
+@import url("./components/background-logo.css");
+
+@import url("./responsive/mobile.css");
